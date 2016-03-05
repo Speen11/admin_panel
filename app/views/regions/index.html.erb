@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список регионов</h1>
+
+<nav>
+  <a href="https://admin-panel-speen.c9users.io/">Страны</a> | <a href="https://admin-panel-speen.c9users.io/regions">Регионы</a> |
+  <a href="https://admin-panel-speen.c9users.io/cities">Города</a> | <a href="https://admin-panel-speen.c9users.io/hostels">Турбазы</a>
+</nav>
+
+<table cellpadding="10" border="1">
+  <thead>
+    <tr>
+      <th>Название региона</th>
+      <th>Страна</th>
+      <th colspan="3">Меню</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regions.each do |region| %>
+      <tr>
+        <td><%= region.region_name %></td>
+        <td><%= region.country.country_name %></td>
+        <td><%= link_to 'Посмотреть', region %></td>
+        <td><%= link_to 'Редактировать', edit_region_path(region) %></td>
+        <td><%= link_to 'Удалить', region, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить регион', new_region_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список турбаз</h1>
+
+<nav>
+  <a href="https://admin-panel-speen.c9users.io/">Страны</a> | <a href="https://admin-panel-speen.c9users.io/regions">Регионы</a> |
+  <a href="https://admin-panel-speen.c9users.io/cities">Города</a> | <a href="https://admin-panel-speen.c9users.io/hostels">Турбазы</a>
+</nav>
+
+<table cellpadding="10" border="1">
+  <thead>
+    <tr>
+      <th>Название турбазы</th>
+      <th>Id city</th>
+      <th colspan="3">Меню</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hostels.each do |hostel| %>
+      <tr>
+        <td><%= hostel.hostel_name %></td>
+        <td><%= hostel.id_city %></td>
+        <td><%= link_to 'Посмотреть', hostel %></td>
+        <td><%= link_to 'Редактировать', edit_hostel_path(hostel) %></td>
+        <td><%= link_to 'Удалить', hostel, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить турбазу', new_hostel_path %>
